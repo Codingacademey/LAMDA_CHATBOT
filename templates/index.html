@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot - AI-Powered Customer Support</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-robot"></i>
+                <span>Chatbot</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#demo">Demo</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    AI-Powered <span class="gradient-text">Customer Support</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Transform your customer experience with intelligent, 24/7 AI assistance. 
+                    Powered by advanced language models and RAG technology.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="openChat()">
+                        <i class="fas fa-comments"></i>
+                        Try Demo
+                    </button>
+                    <button class="btn-secondary">
+                        <i class="fas fa-play"></i>
+                        Watch Demo
+                    </button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-card">
+                    <div class="chat-preview">
+                        <div class="chat-header">
+                            <div class="chat-avatar">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="chat-info">
+                                <h4>Chatbot AI</h4>
+                                <span class="status">Online</span>
+                            </div>
+                        </div>
+                        <div class="chat-messages">
+                            <div class="message bot">
+                                <p>Hello! How can I help you today? 🤖</p>
+                            </div>
+                            <div class="message user">
+                                <p>I need help with my order</p>
+                            </div>
+                            <div class="message bot">
+                                <p>I'd be happy to help! What's your order number?</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-bg">
+            <div class="gradient-orb"></div>
+            <div class="gradient-orb"></div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose <span class="gradient-text">Chatot</span></h2>
+                <p>Advanced AI technology meets intuitive design</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>RAG Technology</h3>
+                    <p>Retrieval-Augmented Generation for accurate, context-aware responses based on your knowledge base.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Multi-Language</h3>
+                    <p>Support for English, Urdu, and Roman Urdu with automatic language detection and response.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>24/7 Availability</h3>
+                    <p>Never miss a customer inquiry with round-the-clock automated support and instant responses.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Secure & Private</h3>
+                    <p>Enterprise-grade security with encrypted conversations and data protection compliance.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Analytics Dashboard</h3>
+                    <p>Track performance, customer satisfaction, and conversation insights with detailed analytics.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <h3>Easy Integration</h3>
+                    <p>Simple API integration with popular platforms and custom deployment options.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" class="demo">
+        <div class="container">
+            <div class="section-header">
+                <h2>Experience <span class="gradient-text">Chatot</span> Live</h2>
+                <p>Try our AI chatbot and see the difference</p>
+            </div>
+            <div class="demo-container">
+                <div class="chat-widget" id="chat-widget">
+                    <div class="chat-header">
+                        <div class="chat-avatar">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="chat-info">
+                            <h4>Chatot AI Assistant</h4>
+                            <span class="status">Online</span>
+                        </div>
+                        <button class="close-chat" onclick="closeChat()">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="chat-messages" id="chat-messages">
+                        <div class="message bot">
+                            <div class="message-avatar">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <p>👋 Hello! I'm Chatot, your AI assistant. How can I help you today?</p>
+                        </div>
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" id="user-input" placeholder="Type your message..." onkeypress="handleKeyPress(event)">
+                        <button onclick="sendMessage()">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="demo-info">
+                    <h3>Interactive Demo</h3>
+                    <p>Ask me anything about customer support, product inquiries, or general questions. I'm here to help!</p>
+                    <div class="demo-features">
+                        <div class="demo-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Real-time responses</span>
+                        </div>
+                        <div class="demo-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Context awareness</span>
+                        </div>
+                        <div class="demo-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Multi-language support</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked <span class="gradient-text">Questions</span></h2>
+                <p>Everything you need to know about Chatot</p>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>How does Chatot's AI technology work?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Chatot uses advanced RAG (Retrieval-Augmented Generation) technology that combines large language models with your specific knowledge base to provide accurate, context-aware responses.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>What languages does Chatot support?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Chatbot supports English, Urdu, and Roman Urdu with automatic language detection. We're constantly adding more languages to serve global customers.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>How secure is my data with Chatbot?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We implement enterprise-grade security measures including end-to-end encryption, data anonymization, and compliance with GDPR and other privacy regulations.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Can I customize Chatbot for my business?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! Chatbot offers extensive customization options including custom knowledge bases, branding, integrations, and AI training specific to your industry.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>What kind of support do you provide?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We provide comprehensive support including documentation, video tutorials, live chat support, and dedicated account managers for enterprise customers.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>How quickly can I get started with Chatbot?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can get started in minutes! Simply sign up, upload your knowledge base, and Chatot will be ready to assist your customers immediately.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-robot"></i>
+                        <span>Chatbot</span>
+                    </div>
+                    <p>Revolutionizing customer support with AI-powered conversations that feel human.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#demo">Demo</a></li>
+                        <li><a href="#">API</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Status</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Chatbot. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='chat.js') }}"></script>
+</body>
+</html>
+
+
